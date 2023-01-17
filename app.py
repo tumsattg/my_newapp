@@ -1,39 +1,13 @@
 import streamlit as st
-from sklearn.datasets import load_digits
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import accuracy_score
+import pandas as pd
 import matplotlib.pyplot as plt
 
-# Load the digits dataset
-digits = load_digits()
-X = digits.data
-y = digits.target
+df = pd.read_csv("data.csv")
 
-# Split the data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+st.dataframe(df)
 
-# Train a random forest classifier
-clf = RandomForestClassifier(n_estimators=100, random_state=42)
-clf.fit(X_train, y_train)
+if st.checkbox("Show line plot"):
+    st.line_chart(df)
 
-# Test the classifier on the test set
-y_pred = clf.predict(X_test)
-acc = accuracy_score(y_test, y_pred)
-
-st.title('Handwritten Digit Classifier')
-st.write('Accuracy:', acc)
-
-# Create a file uploader widget
-uploaded_file = st.file_uploader('Choose an image file', type=['jpg', 'png'])
-if uploaded_file is not None:
-    # Read the image and display it
-    image = plt.imread(uploaded_file)
-    plt.imshow(image, cmap='gray')
-    plt.axis('off')
-    st.pyplot()
-
-    # Apply the classifier to the uploaded image
-    image = image.reshape(-1, 8*8)
-    pred = clf.predict(image)
-    st.write('Predicted digit:', pred[0])
+if st.checkbox("Show bar plot"):
+    st.bar_chart(df)
