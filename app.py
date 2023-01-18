@@ -22,10 +22,10 @@ y_pred = clf.predict(X_test)
 acc = accuracy_score(y_test, y_pred)
 
 st.title('Handwritten Digit Classifier')
-st.write('Accuracy:', acc)
+st.write('精度：', acc)
 
 # Create a file uploader widget
-uploaded_file = st.file_uploader('Choose an image file', type=['jpg', 'png'])
+uploaded_file = st.file_uploader('画像ファイルを選択してください。', type=['jpg', 'png'])
 if uploaded_file is not None:
     # Read the image and display it
     image = plt.imread(uploaded_file)
