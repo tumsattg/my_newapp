@@ -14,12 +14,12 @@ y = digits.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Train a random forest classifier
-clf = RandomForestClassifier(n_estimators=100, random_state=42)
+clf = RandomForestClassifier()
 clf.fit(X_train, y_train)
 
 # Test the classifier on the test set
-y_pred = clf.predict(X_test)
-acc = accuracy_score(y_test, y_pred)
+yhat = clf.predict(X_test)
+acc = accuracy_score(y_test, yhat)
 
 st.title('Handwritten Digit Classifier')
 st.write('精度：', acc)
@@ -36,4 +36,4 @@ if uploaded_file is not None:
     # Apply the classifier to the uploaded image
     image = image.reshape(-1, 8*8)
     pred = clf.predict(image)
-    st.write('Predicted digit:', pred[1])
+    st.write('Predicted digit:', pred[0])
