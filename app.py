@@ -31,7 +31,7 @@ if uploaded_file is not None:
     image = plt.imread(uploaded_file)
     plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
     plt.axis('off')
-    st.pyplot(clf)
+    st.pyplot(image)
 
     # Apply the classifier to the uploaded image
     image = image.reshape(-1, 8*8)
