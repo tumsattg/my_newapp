@@ -31,9 +31,9 @@ if uploaded_file is not None:
     image = plt.imread(uploaded_file)
     plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
     plt.axis('off')
-    st.pyplot(image)
+    st.pyplot()
 
     # Apply the classifier to the uploaded image
     image = image.reshape(-1, 8*8)
     pred = clf.predict(image)
-    st.write('Predicted digit:', pred[0])
+    st.write('Predicted digit:', pred[1])
