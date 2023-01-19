@@ -5,8 +5,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import matplotlib.pyplot as plt
 
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
 # Load the digits dataset
 digits = load_digits()
 X = digits.data
