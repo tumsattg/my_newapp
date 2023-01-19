@@ -14,7 +14,7 @@ y = digits.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Train a random forest classifier
-clf = RandomForestClassifier(n_features=100, random_state=42)
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
 clf.fit(X_train, y_train)
 
 # Test the classifier on the test set
