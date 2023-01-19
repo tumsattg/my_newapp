@@ -14,7 +14,7 @@ y = digits.target
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Train a random forest classifier
-clf = RandomForestClassifier()
+clf = RandomForestClassifier(n_estimators=100, random_state=42)
 clf.fit(X_train, y_train)
 
 # Test the classifier on the test set
@@ -29,7 +29,7 @@ uploaded_file = st.file_uploader('画像ファイルを選択してください�
 if uploaded_file is not None:
     # Read the image and display it
     image = plt.imread(uploaded_file)
-    plt.imshow(image[0], cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
     plt.axis('off')
     st.pyplot()
 
