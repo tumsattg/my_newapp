@@ -29,7 +29,7 @@ uploaded_file = st.file_uploader('画像ファイルを選択してください�
 if uploaded_file is not None:
     # Read the image and display it
     image = plt.imread(uploaded_file)
-    plt.imshow(image, cmap=plt.cm.gray_r, interpolation='nearest')
+    plt.imshow(image[0], cmap=plt.cm.gray_r, interpolation='nearest')
     plt.axis('off')
     st.pyplot()
 
